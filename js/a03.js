@@ -8,35 +8,35 @@ A03.prototype.getA03DataFromServer = function(ctrlManager,
     setTimeout(function(){ctrlManager.appendFile(hwpCtrl, location.origin + "/AIMS_test/hwp/a03.hwp" , function(){
 
 
-        var dact = hwpCtrl.CreateAction("PageSetup");
-        var dset = dact.CreateSet();
-        dact.GetDefault(dset);
+    //     var dact = hwpCtrl.CreateAction("PageSetup");
+    //     var dset = dact.CreateSet();
+    //     dact.GetDefault(dset);
 
-        // 여백 넓게
-        dset.SetItem ("Landscape", 1);
+    //     // 여백 넓게
+    //     dset.SetItem ("Landscape", 1);
 
-        // 현재 페이지 설정(2), 문서전체(3), 현재 페이지 이후(4)
-        dset.SetItem ("ApplyTo", 2);
-        var _dset = dset.CreateItemSet ("PageDef", "PageDef");
+    //     // 현재 페이지 설정(2), 문서전체(3), 현재 페이지 이후(4)
+    //     dset.SetItem ("ApplyTo", 2);
+    //     var _dset = dset.CreateItemSet ("PageDef", "PageDef");
 
-// 1mm = 283.465 HWPUNITs
+    //    // 1mm = 283.465 HWPUNITs
 
-        _dset.SetItem ("TopMargin", 5000);
-        _dset.SetItem ("BottomMargin", 1568);
-        _dset.SetItem ("LeftMargin", 2834);
-        _dset.SetItem ("RightMargin", 2834);
+    //     _dset.SetItem ("TopMargin", 5000);
+    //     _dset.SetItem ("BottomMargin", 1568);
+    //     _dset.SetItem ("LeftMargin", 2834);
+    //     _dset.SetItem ("RightMargin", 2834);
 
-        // 머릿말 마진
-        _dset.SetItem ("HeaderLen", 7917);
+    //     // 머릿말 마진
+    //     _dset.SetItem ("HeaderLen", 7917);
 
-        // 바닥글 마진
-        _dset.SetItem ("FooterLen", 1587);
-        _dset.SetItem ("GutterLen", 0);
+    //     // 바닥글 마진
+    //     _dset.SetItem ("FooterLen", 1587);
+    //     _dset.SetItem ("GutterLen", 0);
 
-        dact.Execute(dset);
+    //     dact.Execute(dset);
 
-        hwpCtrl.MovePos(3);
-        hwpCtrl.Run("BreakSection");
+    //     hwpCtrl.MovePos(3);
+    //     hwpCtrl.Run("BreakSection");
 
 
     });
@@ -46,12 +46,12 @@ A03.prototype.getA03DataFromServer = function(ctrlManager,
     },3000);
 
 
-    hwpCtrl.CreateField('', "", '본문');
-    hwpCtrl.MoveToField('본문', true, true, true);
-    hwpCtrl.MovePos(104);
-    console.log("본문으로 이동 ==>", hwpCtrl.MoveToField('본문', true, true, true));    
+    // hwpCtrl.CreateField('', "", '본문');
+    // hwpCtrl.MoveToField('본문', true, true, true);
+    // hwpCtrl.MovePos(104);
+    // console.log("본문으로 이동 ==>", hwpCtrl.MoveToField('본문', true, true, true));    
 
-    hwpCtrl.SetCurFieldName('SP_SELECT_APP_A03/TITLE');
+    // hwpCtrl.SetCurFieldName('SP_SELECT_APP_A03/TITLE');
 
     // 템플릿 스타일 설정
 
@@ -61,6 +61,156 @@ A03.prototype.getA03DataFromServer = function(ctrlManager,
 A03.prototype.setA03DataToScreen = function(ctrlManager,hwpCtrl,apprId,summaryDataFromServer) {
 
     hwpCtrl.MovePos(2);
+
+    // fieldkey 있을 시
+  
+
+        //위치로 이동
+        hwpCtrl.MoveToField('SP_SELECT_APP_A03/TITLE0', true, true, true);
+
+        //글자에 대한 action 실행
+        var vAct = hwpCtrl.CreateAction("CharShape");
+        var vSet = hwpCtrl.CreateSet("CharShape");
+        vAct.GetDefault(vSet);
+
+        // 글자 색깔
+        vSet.SetItem("TextColor", 0x00000000);
+
+        //글자 크기 2500 == 25pt
+        vSet.SetItem("Height", 1600);
+        vAct.Execute(vSet);
+    
+
+  
+
+        //위치로 이동
+        hwpCtrl.MoveToField('SP_SELECT_APP_A03/TITLE1', true, true, true);
+
+        //글자에 대한 action 실행
+        var vAct = hwpCtrl.CreateAction("CharShape");
+        var vSet = hwpCtrl.CreateSet("CharShape");
+        vAct.GetDefault(vSet);
+
+        // 글자 색깔
+        vSet.SetItem("TextColor", 0x00000000);
+
+        //글자 크기 2500 == 25pt
+        vSet.SetItem("Height", 1300);
+        vAct.Execute(vSet);
+
+
+
+        hwpCtrl.MoveToField('SP_SELECT_APP_A03/AppraisalMethod', true, true, true);
+
+        //글자에 대한 action 실행
+        var vAct = hwpCtrl.CreateAction("CharShape");
+        var vSet = hwpCtrl.CreateSet("CharShape");
+        vAct.GetDefault(vSet);
+
+        // 글자 색깔
+        vSet.SetItem("TextColor", 0x00000000);
+
+        //글자 크기 2500 == 25pt
+        vSet.SetItem("Height", 1100);
+        vAct.Execute(vSet);
+
+
+        hwpCtrl.MoveToField('SP_SELECT_APP_A03/TITLE3', true, true, true);
+
+        //글자에 대한 action 실행
+        var vAct = hwpCtrl.CreateAction("CharShape");
+        var vSet = hwpCtrl.CreateSet("CharShape");
+        vAct.GetDefault(vSet);
+
+        // 글자 색깔
+        vSet.SetItem("TextColor", 0x00000000);
+
+        //글자 크기 2500 == 25pt
+        vSet.SetItem("Height", 1200);
+        vAct.Execute(vSet);
+
+
+
+        hwpCtrl.MoveToField('SP_SELECT_APP_A03/ModPriceListDecide', true, true, true);
+
+        //글자에 대한 action 실행
+        var vAct = hwpCtrl.CreateAction("CharShape");
+        var vSet = hwpCtrl.CreateSet("CharShape");
+        vAct.GetDefault(vSet);
+
+        // 글자 색깔
+        vSet.SetItem("TextColor", 0x00000000);
+
+        //글자 크기 2500 == 25pt
+        vSet.SetItem("Height", 1100);
+        vAct.Execute(vSet);
+
+
+
+        hwpCtrl.MoveToField('SP_SELECT_APP_A03/TITLE6', true, true, true);
+
+        //글자에 대한 action 실행
+        var vAct = hwpCtrl.CreateAction("CharShape");
+        var vSet = hwpCtrl.CreateSet("CharShape");
+        vAct.GetDefault(vSet);
+
+        // 글자 색깔
+        vSet.SetItem("TextColor", 0x00000000);
+
+        //글자 크기 2500 == 25pt
+        vSet.SetItem("Height", 1200);
+        vAct.Execute(vSet);
+
+
+
+
+        hwpCtrl.MoveToField('SP_SELECT_APP_A03/TITLE7', true, true, true);
+
+        //글자에 대한 action 실행
+        var vAct = hwpCtrl.CreateAction("CharShape");
+        var vSet = hwpCtrl.CreateSet("CharShape");
+        vAct.GetDefault(vSet);
+
+        // 글자 색깔
+        vSet.SetItem("TextColor", 0x00000000);
+
+        //글자 크기 2500 == 25pt
+        vSet.SetItem("Height", 1300);
+        vAct.Execute(vSet);
+
+
+
+        hwpCtrl.MoveToField('SP_SELECT_APP_A03/SUBTITLE', true, true, true);
+
+        //글자에 대한 action 실행
+        var vAct = hwpCtrl.CreateAction("CharShape");
+        var vSet = hwpCtrl.CreateSet("CharShape");
+        vAct.GetDefault(vSet);
+
+        // 글자 색깔
+        vSet.SetItem("TextColor", 0x00000000);
+
+        //글자 크기 2500 == 25pt
+        vSet.SetItem("Height", 1100);
+        vAct.Execute(vSet);
+
+
+        
+
+
+        
+        
+
+
+
+        
+
+    
+        
+
+
+        
+    
 
     // var tbact = hwpCtrl.CreateAction("TableCreate");
     // var tbset = tbact.CreateSet();
